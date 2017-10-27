@@ -6,7 +6,6 @@ require 'pg'
 require 'httparty'
 require 'dotenv'
 require 'pry-byebug'
-#require 'date'
 
 configure do
   enable :logging
@@ -25,7 +24,6 @@ class Recharge
   attr_reader :access_token, :default_headers
 
   @@sleep_time = ENV['RECHARGE_SLEEP_TIME']
-  #@@base_uri = 'https://httpbin.org/anything'
   @@base_uri = 'https://api.rechargeapps.com'
 
   def initialize(*args)
@@ -70,6 +68,9 @@ end
 
 get '/subscriptions' do 
   shopify_id = params['shopify_id']
+  unless shopify_id.instance_of? Integer
+    return [400, JSON.generate({error: 'shopify_id required'})]
+  end
   subscriptions = Recharge.new.subscriptions_by_shopify_id shopify_id
   output = subscriptions.map{|sub| transform_subscriptions(sub)}
   [200, JSON.generate(output)]
@@ -78,6 +79,9 @@ end
 post '/subscriptions' do
   json = JSON.parse request.body.read
   shopify_id = json['shopify_id']
+  unless shopify_id.instance_of? Integer
+    return [400, JSON.generate({error: 'shopify_id required'})]
+  end
   subscriptions = Recharge.new.subscriptions_by_shopify_id shopify_id
   output = subscriptions.map{|sub| transform_subscriptions(sub)}
   [200, JSON.generate(output)]
