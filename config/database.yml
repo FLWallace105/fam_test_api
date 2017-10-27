@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ellie
+  pool: 2
+  #url: <%= ENV['DATABASE_URL'] %>
+  url: 'postgres://postgres:1amadmin@127.0.0.1:5432/ellie'
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ellieactive_test
+  pool: 2
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ellieactive_production
+  pool: 2
+  url: <%= ENV['DATABASE_URL'] %>
