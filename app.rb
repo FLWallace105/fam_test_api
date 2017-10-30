@@ -5,7 +5,7 @@ require 'json'
 require 'pg'
 require 'httparty'
 require 'dotenv'
-require 'pry-byebug'
+#require 'pry-byebug'
 
 configure do
   enable :logging
