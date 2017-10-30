@@ -12,6 +12,7 @@ gem 'activesupport'
 gem 'sinatra-support'
 gem 'sinatra-basic-auth'
 gem 'safe_attributes'
+gem 'rack'
 
 group :development do
   gem 'pry-byebug'

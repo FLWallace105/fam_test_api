@@ -66,6 +66,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma
+  rack
   rake
   safe_attributes
   sinatra

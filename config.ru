@@ -1,5 +1,5 @@
 require_relative 'app'
-require 'sinatra'
+#require 'sinatra'
 
 use Rack::ContentLength
 run Sinatra::Application
